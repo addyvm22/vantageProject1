@@ -36,7 +36,6 @@ class Server {
   public eventHandlers: Array<ServerEvent.EventHandler>;
   public errorEmitter: ServerError.ErrorEmitter;
   public errorHandlers: Array<ServerError.ErrorHandler>;
-  public tokenService: TokenService;
 
   /**
    * Bootstrap the application.
@@ -69,13 +68,13 @@ class Server {
     this.errorHandlers = [new ServerError.ErrorHandler(this.errorEmitter)];
     // Configure `Mongoose`
     this.mongooseConf(this.eventEmitter, this.errorEmitter);
-    this.tokenService = new TokenService();
+    let tokenService = new TokenService();
     // Configure `PassportJS`
-    this.passportConf(passport, this.tokenService);
+    this.passportConf(passport, tokenService);
     // Configure application
     this.config();
     // Configure `Express` routes
-    this.routes(this.app, passport, this.eventEmitter, this.tokenService);
+    this.routes(this.app, passport, this.eventEmitter, tokenService);
 
   }
 
@@ -117,7 +116,7 @@ class Server {
     });
 
     // Passport JS
-    //this.app.use(cookieParser());
+    this.app.use(cookieParser());
     // Session secret
     this.app.use(session({
       secret : process.env.SESSION_SECRET,

@@ -90,7 +90,7 @@ export class AuthService {
                 } else {
                     // Set HTTP status code `200 OK`                
                     res.status(200);
-                    res.cookie('remember_me', token, { path: '/', httpOnly: true});
+                    //res.cookie('remember_me', token, { path: '/', httpOnly: true});
                     let responseUser = new UserResponseDTO( user, req.body.rememberMe);
                     // Return the user object
                     res.json(responseUser);

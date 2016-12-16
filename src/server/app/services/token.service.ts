@@ -1,13 +1,19 @@
 import * as jwt from 'jwt-simple';
+
+let self;
+
 export class TokenService {
     /* Fake, in-memory database of remember me tokens */
     tokens: any;
+    
     constructor() {
         this.tokens = {};
+        self = this;
     }
     public generateAndSaveToken(user, done) {
         let token = jwt.encode(user._id, process.env.SESSION_SECRET);
-        this.saveRememberMeToken(token, user._id, (err) => {
+        console.log('generateAndSaveToken');
+        self.saveRememberMeToken(token, user._id, (err) => {
             if (err) { return done(err); }
             return done(null, token);
         });

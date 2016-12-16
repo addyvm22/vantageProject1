@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from '../shared/services/cookie.service';
 import { HttpService } from '../shared/services/http.service';
 
 @Injectable()
 export class EventService {
 
-    constructor(private httpService: HttpService) {
+    constructor(private httpService: HttpService, private cookieService: CookieService) {
 
     }
 

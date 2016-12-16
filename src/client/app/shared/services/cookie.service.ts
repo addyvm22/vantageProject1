@@ -13,7 +13,7 @@ export class CookieService {
                     expires.setTime(exp);
                     document.cookie = cName + '=' + cValue + '; ' + 'expires=' + expires + Config.cookieSecure;
                 } else {
-                    document.cookie = cName + '=' + cValue + Config.cookieSecure;
+                    document.cookie = cName + '=' + cValue + ';'+ Config.CookieSecure;
                 }
             }
 

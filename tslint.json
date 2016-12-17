@@ -74,20 +74,20 @@
       "check-module"
     ],
 
-    "eofline": true,
+    "eofline": false,
     "indent": [
-      true,
+      false,
       "spaces"
     ],
     "max-line-length": [
-      true,
+      false,
       100
     ],
     "no-require-imports": false,
-    "no-trailing-whitespace": true,
+    "no-trailing-whitespace": false,
     "object-literal-sort-keys": false,
     "trailing-comma": [
-      true,
+      false,
       {
         "multiline": "false",
         "singleline": "never"
@@ -97,15 +97,15 @@
     "align": false,
     "class-name": true,
     "comment-format": [
-      true,
+      false,
       "check-space"
     ],
     "interface-name": false,
-    "jsdoc-format": true,
+    "jsdoc-format": false,
     "no-consecutive-blank-lines": false,
     "no-constructor-vars": false,
     "one-line": [
-      true,
+      false,
       "check-open-brace",
       "check-catch",
       "check-else",
@@ -113,11 +113,11 @@
       "check-whitespace"
     ],
     "quotemark": [
-      true,
+      false,
       "single",
       "avoid-escape"
     ],
-    "semicolon": [true, "always"],
+    "semicolon": [false, "always"],
     "variable-name": [
       true,
       "check-format",
@@ -125,7 +125,7 @@
       "ban-keywords"
     ],
     "whitespace": [
-      true,
+      false,
       "check-branch",
       "check-decl",
       "check-operator",

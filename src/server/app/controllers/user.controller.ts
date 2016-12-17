@@ -2,6 +2,7 @@ import * as express from 'express';
 import { IUser, User, UserDocument, Users } from '../../db/models/user.model';
 import Controller  from '../config/controller.config';
 import { UserService } from '../services/user.service.ts';
+import { ErrorDTO } from '../DTO/ErrorDTO';
 const BASE_URI = '/user';
 
 module UserModule {
@@ -38,13 +39,13 @@ module UserModule {
                         res.send(data);
                      })
                     .catch((err: any) => {
-                        res.status(500);
-                        res.json({message: err, status: 0});
+                        let error = new ErrorDTO(err, 1);
+                        res.status(500).json(error);
                      });
                     
                 } catch(e) {
-                    res.status(500);
-                    res.json({message: e, status: 0});
+                    let error = new ErrorDTO(e);
+                    res.status(500).json(error);
                 }
                 
             });
@@ -65,13 +66,13 @@ module UserModule {
                             }
                      })
                     .catch((err: any) => {
-                        res.status(500);
-                        res.json({status: 0, message: err});
+                        let error = new ErrorDTO(err, 1);
+                        res.status(500).json(error);
                      });
                     
                 } catch (e) {
-                    res.status(500);
-                    res.json(e);
+                    let error = new ErrorDTO(e);
+                    res.status(500).json(error);
                 }
             });
 
@@ -86,13 +87,13 @@ module UserModule {
                         res.json(user);
                     })
                     .catch((err: any) => {
-                        res.status(500);
-                        res.json({status: 0, message: err});
+                        let error = new ErrorDTO(err, 1);
+                        res.status(500).json(error);
                     });
                     
                 } catch(e) {
-                    res.status(500);
-                    res.json({status: 0, message: e}); 
+                    let error = new ErrorDTO(e);
+                    res.status(500).json(error);
                 }
             });
 
@@ -113,13 +114,13 @@ module UserModule {
                         }
                      })
                     .catch((err: any) => {
-                        res.status(500);
-                        res.json({status: 0, message: err});
+                        let error = new ErrorDTO(err, 1);
+                        res.status(500).json(error);
                     });
                     
                } catch(e) {
-                    res.status(500);
-                    res.json({status: 0, message: e});    
+                    let error = new ErrorDTO(e);
+                    res.status(500).json(error);    
                }
             });
 
@@ -134,12 +135,12 @@ module UserModule {
                         res.json({ status: 1, id: userId, message: 'user details updated' });
                      })
                     .catch((err: any) => {
-                        res.status(500);
-                        res.json({status: 0, message: err});
+                        let error = new ErrorDTO(err, 1);
+                        res.status(500).json(error);
                      });
                 } catch(e) {
-                    res.status(500);
-                    res.json({status: 0, message: e});
+                    let error = new ErrorDTO(e);
+                    res.status(500).json(error);
                 }
             });
         }

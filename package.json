@@ -10,8 +10,8 @@
     "express",
     "mongodb"
   ],
-  "author": "Ankit Pundhir <anku.ankit11@gmail.com>",
-  "homepage": "https://github.com/ankuanky/mea2n-typescript",
+  "author": "Annant Gupta <annant.gupta@routerabbit.com>",
+  "homepage": "https://github.com/annantrouterabbit/mean2-seed",
   "license": "MIT",
   "scripts": {
     "build": "npm run build:dev",
@@ -193,10 +193,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ankuanky/mea2n-typescript.git"
+    "url": "https://github.com/annantrouterabbit/mean2-seed.git"
   },
   "bugs": {
-    "url": "https://github.com/ankuanky/mea2n-typescript/issue"
+    "url": "https://github.com/annantrouterabbit/mean2-seed/issue"
   },
   "engines": {
     "node": ">= 4.2.1",

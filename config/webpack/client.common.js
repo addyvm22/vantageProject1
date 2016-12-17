@@ -37,7 +37,7 @@ const precss       = require('precss');
  */
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
-  title: 'Codezinger',
+  title: 'Mean2-Seed',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
 };

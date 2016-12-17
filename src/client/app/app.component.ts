@@ -23,10 +23,10 @@ let template = require('./app.html');
   template
 })
 export class AppComponent {
-  public appLogo = 'assets/img/author-logo.gif';
-  public author = '@datatype_void'
-  public name = 'Codezinger';
-  public url = 'https://twitter.com/datatype_void';
+  public appLogo = 'assets/img/mean2-seed.png';
+  public author = 'Annant Gupta'
+  public name = 'Mean2-Seed';
+  public url = 'https://Github.com/annantrouterabbit';
 
   constructor(private appState: AppState, private authService: AuthService, private cookieService: CookieService) {
 

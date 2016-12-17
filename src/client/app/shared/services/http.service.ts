@@ -17,6 +17,20 @@ export class HttpService {
 //    }
 //    
 // 
+    public makeHttpPutRequestWithToken(url:string, data?:any) {
+        return this.makeHttpRequest(url, RequestMethod.Put, data, true);
+    }
+    
+    public makeHttpPutRequestWithoutToken(url:string, data?:any) {
+        return this.makeHttpRequest(url, RequestMethod.Put, data, false);
+    }
+    public makeHttpDeleteRequestWithToken(url:string, data?:any) {
+        return this.makeHttpRequest(url, RequestMethod.Delete, data, true);
+    }
+    
+    public makeHttpDeleteRequestWithoutToken(url:string, data?:any) {
+        return this.makeHttpRequest(url, RequestMethod.Delete, data, false);
+    }
     public makeHttpGetRequestWithToken(url:string, data?:any) {
         return this.makeHttpRequest(url, RequestMethod.Get, data, true);
     }

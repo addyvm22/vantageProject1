@@ -41,6 +41,7 @@ import testConfig from './webpack/server.test';
 
 /**
  * File globs for use during documentation generation with Docco
+ * 
  * @type {Object}
  */
 const globs = {
@@ -86,17 +87,16 @@ gulp.task('watch:server', ['watch:server:dev']);
  */
 gulp.task('build:server:dev', (done) => {
   /**
-   * You can pass a `config` object to `webpack` and get
-   * back a compiler. From there, you can call `run` or
-   * `watch` on the compiler.
-   */
+	 * You can pass a `config` object to `webpack` and get back a compiler. From
+	 * there, you can call `run` or `watch` on the compiler.
+	 */
   webpack(developmentConfig()).run(onBuild(done));
 });
 
 gulp.task('watch:server:dev', () => {
   /**
-   * The first argument is a delay
-   */
+	 * The first argument is a delay
+	 */
   webpack(developmentConfig()).watch(100, (err, stats) => {
     onBuild()(err, stats);
     nodemon.restart();
@@ -136,11 +136,10 @@ gulp.task('watch:server:test', () => {
  */
 
 /**
- * This task watches the files belonging to the app for changes
- * When a change is detected the `watch:backend` task will be
- * automatically fired, which will allow `webpack` to recompile
- * the server code. After this is complete `nodemon` will restart
- * the server.
+ * This task watches the files belonging to the app for changes When a change is
+ * detected the `watch:backend` task will be automatically fired, which will
+ * allow `webpack` to recompile the server code. After this is complete
+ * `nodemon` will restart the server.
  */
 gulp.task('serve', ['build:server', 'watch:server'], () => {
 
@@ -153,10 +152,9 @@ gulp.task('serve', ['build:server', 'watch:server'], () => {
     script: path.join(helpers.root('dist/server'), 'server.bundle'),
 
     /**
-     * We don't actually want `nodemon`'s watcher to watch anything.
-     * That is why we pass `ignore` `*` and give `watch` a non-existant
-     * directory.
-     */
+	 * We don't actually want `nodemon`'s watcher to watch anything. That is why
+	 * we pass `ignore` `*` and give `watch` a non-existant directory.
+	 */
     ignore: ['*'],
 
     watch: ['foo/'],
@@ -193,29 +191,22 @@ gulp.task('watch:sass', () => {
  */
 gulp.task('build:docs', ['clean:docs'], () => {
   /**
-   * For `gulp-docco` if the need arises
-   *  Default configuration options. All of these may be extended by user-specified options.
-   *
-   *  defaults =
-   *    layout:     'parallel'
-   *    output:     'docs'
-   *    template:   null
-   *    css:        null
-   *    extension:  null
-   *    languages:  {}
-   *    marked:     null
-   *
-   *  Example:
-   *
-   *  let docco = require("gulp-docco");
-   *
-   *  gulp.src("./src/*.js")
-   *    .pipe(docco(options))
-   *    .pipe(gulp.dest('./documentation-output'))
-   *
-   * Reference: https://www.npmjs.com/package/gulp-docco
-   * Also see: https://jashkenas.github.io/docco/
-   */
+	 * For `gulp-docco` if the need arises Default configuration options. All of
+	 * these may be extended by user-specified options.
+	 * 
+	 * defaults = layout: 'parallel' output: 'docs' template: null css: null
+	 * extension: null languages: {} marked: null
+	 * 
+	 * Example:
+	 * 
+	 * let docco = require("gulp-docco");
+	 * 
+	 * gulp.src("./src/*.js") .pipe(docco(options))
+	 * .pipe(gulp.dest('./documentation-output'))
+	 * 
+	 * Reference: https://www.npmjs.com/package/gulp-docco Also see:
+	 * https://jashkenas.github.io/docco/
+	 */
   const options = {
     layout:     'parallel',
     output:     'docs',
@@ -227,10 +218,9 @@ gulp.task('build:docs', ['clean:docs'], () => {
   };
 
   /**
-   * Take a file `glob` pattern and a file extension matching
-   * the extension of the files you are trying to generate
-   * documentation for
-   */
+	 * Take a file `glob` pattern and a file extension matching the extension of
+	 * the files you are trying to generate documentation for
+	 */
   function generateDocs(fileSrc, dest) {
     if(!dest) {
       throw new Error('Destination must be passed in for documentation to be ' +
@@ -251,8 +241,8 @@ gulp.task('build:docs', ['clean:docs'], () => {
 });
 
 /**
- * Use the 'del' module to clear all traces of documentation
- * Useful before regenerating documentation
+ * Use the 'del' module to clear all traces of documentation Useful before
+ * regenerating documentation
  */
 gulp.task('clean:docs', (callback) => {
   console.log('Cleaning documentation...');

@@ -3,6 +3,7 @@ import * as express from 'express';
 // Load `User` `interfaces`, `class`, and `model`
 import { IUser, User, UserDocument, Users } from '../../db/models/user.model';
 import Controller  from '../config/controller.config';
+import { ErrorDTO } from '../DTO/ErrorDTO';
 import { ValidationService } from '../services/validation.service';
 
 const BASE_URI = '/validate';
@@ -35,13 +36,13 @@ module Validation {
                         })
                         .catch((err: any) => {
                             console.log('mongo error: ' + err);
-                            res.status(500);
-                            res.json({message: err, status: 0});
+                            let error = new ErrorDTO(err, 1);
+                            res.status(500).json(error);
                         });
                     } catch(e) {
                         console.log('other error: ' + e);
-                        res.status(500);
-                        res.json({message: e, status: 0});
+                        let error = new ErrorDTO(e);
+                        res.status(500).json(error);
                     }     
                 });
         }

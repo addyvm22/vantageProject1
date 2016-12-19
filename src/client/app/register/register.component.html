@@ -1,12 +1,22 @@
 <div class="row">
 	<div class="col-lg-7 col-md-7 col-sm-12">
-		<Strong>Features of Mean2 Seed</Strong>
+		<h3>Features of Mean2 Seed</h3>
+		<h5>
+			<ul>
+				<li>Support Angular2 with Typescript</li>
+				<li>Support Node with Typescript</li>
+				<li>Use Webpack to build project</li>
+				<li>Support lazyload</li>
+				<li>Inbuilt client and server side authentication modules with
+					remember me feature</li>
+			</ul>
+		</h5>
 	</div>
 	<div class="col-lg-5 col-md-5 col-sm-12">
 		<form [formGroup]="registerForm" novalidate
 			(submit)="processUserData()">
-			<fieldset class="form-group" style="padding:15px;">
-				<h3 style="padding-bottom:15px;">Create a new account</h3>
+			<fieldset class="form-group" style="padding: 15px;">
+				<h3 style="padding-bottom: 15px;">Create a new account</h3>
 				<div class="form-group has-feedback"
 					[ngClass]="{'has-success': registerForm.controls.username.valid, 'has-error': submitted && registerForm.controls.username.invalid}">
 					<!-- 				<label class="form-control-label">Username</label>  -->
@@ -36,8 +46,8 @@
 				<div class="form-group"
 					[ngClass]="{'has-success': registerForm.controls.password.valid, 'has-error': submitted && registerForm.controls.password.invalid}">
 					<!-- 				<label class="form-control-label">Password</label>  -->
-					<input type="password" class="form-control" formControlName="password"
-						placeholder="Password" required>
+					<input type="password" class="form-control"
+						formControlName="password" placeholder="Password" required>
 					<div class="control-label"
 						*ngIf="submitted && registerForm.controls.password.invalid">
 						<div *ngIf="registerForm.controls.password.errors?.required">*Required</div>
@@ -48,8 +58,8 @@
 				<div class="form-group"
 					[ngClass]="{'has-success': registerForm.controls.confirm.valid, 'has-error': submitted && registerForm.controls.confirm.invalid}">
 					<!-- 				<label class="form-control-label">Password</label>  -->
-					<input type="password" class="form-control" formControlName="confirm"
-						placeholder="Confirm Password" required>
+					<input type="password" class="form-control"
+						formControlName="confirm" placeholder="Confirm Password" required>
 					<div class="control-label"
 						*ngIf="submitted && registerForm.controls.confirm.invalid">
 						<div *ngIf="registerForm.controls.confirm.errors?.required">*Required</div>
@@ -58,7 +68,7 @@
 					</div>
 				</div>
 				<div>
-					<button type="submit" class="btn btn-primary">SignIn</button>
+					<button type="submit" class="btn btn-primary">SignUp</button>
 				</div>
 				<div>
 					Already have an account? <a [routerLink]="['../login']"

@@ -115,9 +115,11 @@ export class AuthService {
                 res.status(409);
                 // Return the info message
                 return next(info.message);
-            }
-            // Set HTTP status code `204 No Content`
-            res.sendStatus(204);
+            }            
+            let responseUser = new UserResponseDTO(user, req.body.rememberMe);
+            // Set HTTP status code `200 OK`
+            res.status(200);
+            res.json(responseUser);
         })(req, res, next);
     }
 }

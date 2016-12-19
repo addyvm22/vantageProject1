@@ -22,6 +22,7 @@ import { RegisterComponent, RegisterRoutingModule } from './register';
 import { ROUTES } from './app.routes';
 import { SHARED_APP_DIRECTIVES } from './shared/directives';
 import { SHARED_APP_SERVICES } from './shared/services';
+import { SHARED_APP_COMPONENTS } from './shared/components';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -44,6 +45,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     ...SHARED_APP_DIRECTIVES,
+    ...SHARED_APP_COMPONENTS,
     AppComponent,
     NoContentComponent,
     RegisterComponent

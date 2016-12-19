@@ -82,7 +82,8 @@ export default function passportConf(passport, tokenService) {
     // ## Serialize User
     passport.serializeUser((user: UserDocument, done: any) => {
         let sessionUser = {
-            _id: user._id,
+//            _id: user._id,
+            email: user.email,
             username: user.username,
             role: user.role
         };
@@ -188,19 +189,20 @@ export default function passportConf(passport, tokenService) {
                 } else {
                     // If there is no user with that email or username...
                     // Create the user
-                    let newUser = new Users();
+                    let newUser = new User(req.body);
                     // Set the user's local credentials
                     // Combat case sensitivity by converting username and
                     // email to lowercase characters
-                    newUser.username = username.toLowerCase();
-                    newUser.email = req.body.email.toLowerCase();
-                    // Hash password with model method
-                    newUser.password = newUser.generateHash(password);
+//                    newUser.username = username.toLowerCase();
+//                    newUser.email = req.body.email.toLowerCase();
+//                    newUser.role = req.body.role || 'ROLE_USER';
+//                    // Hash password with model method
+//                    newUser.password = newUser.generateHash(password);
                     // Save the new user
-                    newUser.save((err) => {
+                    Users.create(newUser, (err, data) => {
                         if (err)
                             throw err;
-                        return done(null, newUser);
+                        return done(null, data);
                     });
                 }
             });

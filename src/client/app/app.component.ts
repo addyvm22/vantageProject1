@@ -2,12 +2,6 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-
-import { AppState } from './app.service';
-import { AuthService, } from './shared/services/auth.service';
-import { CookieService } from './shared/services/cookie.service';
-import { ChatModule } from './chat';
-
 let template = require('./app.html');
 
 /*
@@ -28,21 +22,12 @@ export class AppComponent {
   public name = 'Mean2-Seed';
   public url = 'https://Github.com/annantrouterabbit';
 
-  constructor(private appState: AppState, private authService: AuthService, private cookieService: CookieService) {
+  constructor() {
 
   }
 
   ngOnInit() {
     //console.log('Initial App State', this.appState.state);
-  }
-
-  logout() {
-    this.authService.logout().map(res => res.json)
-      .subscribe((res) => {
-        console.log(res);
-      }, (err) => {
-        console.error(err);
-      });
   }
 
 }

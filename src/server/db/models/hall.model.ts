@@ -2,7 +2,7 @@ import mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;
 
-export interface IConfHall{
+export interface IHall{
     name:string;
     location: string;
     city: string;
@@ -13,7 +13,7 @@ export interface IConfHall{
 }
 
 
-export class ConfHall{
+export class Hall{
     name:string;
     location: string;
     city: string;
@@ -22,7 +22,7 @@ export class ConfHall{
     ratings: Number;
     imageUrl: string;
 
-    constructor(data: ConfHall){
+    constructor(data: Hall){
         console.log("data, ", data);
         this.name = data.name;
         this.location = data.location;
@@ -30,13 +30,13 @@ export class ConfHall{
         this.country = data.country;
         this.no_of_seats = data.no_of_seats;
         this.ratings = data.ratings;
-        if (data.ratings>5 || data.ratings<0) this.ratings = undefined;
+        //if (data.ratings>5 || data.ratings<0) this.ratings = undefined;
         this.imageUrl = data.imageUrl;
     }
     
 }
 
-let confHallSchema = new Schema({
+let hallSchema = new Schema({
     name :      { type : String, unique : true, required: true },
     location :  { type : String, required : true},
     city :      { type : String, required : true},
@@ -47,6 +47,6 @@ let confHallSchema = new Schema({
 });
 
 
-export interface ConfHallDocument extends ConfHall, mongoose.Document{}
+export interface HallDocument extends Hall, mongoose.Document{}
 
-export let ConfHalls = mongoose.model<ConfHallDocument>('ConfHall', confHallSchema);
+export let Halls = mongoose.model<HallDocument>('Hall', hallSchema);

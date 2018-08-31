@@ -37,6 +37,10 @@ module Authentication {
                     next: express.NextFunction) => {
                     res.send(req.isAuthenticated() ? req.user : '0');
                 });
+
+            //this.router.delete('url', fn1, fn2) fn1 and fn2 get parameters as (req,res,next) 
+            //if we visit this route, fn1 gets called first and then if it does not generate an error, 
+            // express.nextFunction is called with the same parameters.
             this.router
                 .delete(`${BASE_URI}/delete/:uid`, this.admin, (req: express.Request,
                     res: express.Response) => {

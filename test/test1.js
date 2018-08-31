@@ -3,12 +3,9 @@ var config = require('/home/ubuntu/Documents/Adwait/project/mean2-seed/config/co
 console.log(config.MONGO_URI.DEVELOPMENT);
 console.log(config.MONGO_URI.PRODUCTION);
 
-const testUri = config.MONGO_URI.TEST;
+const testURI = config.MONGO_URI.TEST;
 
 const mongoose = require('mongoose');
-
-
-
 
 
 

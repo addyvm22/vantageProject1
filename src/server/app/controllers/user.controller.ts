@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { IUser, User, UserDocument, Users } from '../../db/models/user.model';
 import Controller  from '../config/controller.config';
-import { UserService } from '../services/user.service.ts';
+import { UserService } from '../services/user.service';
 import { ErrorDTO } from '../DTO/ErrorDTO';
 const BASE_URI = '/user';
 

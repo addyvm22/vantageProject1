@@ -32,8 +32,8 @@ module UserModule {
                     let currentPage = Number(page.page);
                     let pageNumber = currentPage - 1;
                     let skip = (itemsPerPage * pageNumber);
-                    let limit = (itemsPerPage * pageNumber) + itemsPerPage;
-                    this.userService.userList(page, itemsPerPage, currentPage, pageNumber, skip, limit)
+                    let limit = skip + itemsPerPage;
+                    this.userService.userList( page, itemsPerPage, currentPage, pageNumber, skip, limit)
                     .then((data: any) => {
                         res.status(200);
                         res.send(data);
@@ -41,13 +41,12 @@ module UserModule {
                     .catch((err: any) => {
                         let error = new ErrorDTO(err, 1);
                         res.status(500).json(error);
-                     });
+                    });
                     
                 } catch(e) {
                     let error = new ErrorDTO(e);
                     res.status(500).json(error);
                 }
-                
             });
             //controller for saving new user details
             this.router.post(BASE_URI, this.admin, (req: express.Request,
@@ -143,6 +142,7 @@ module UserModule {
                     res.status(500).json(error);
                 }
             });
+
         }
     }
 }

@@ -35,6 +35,7 @@ module Authentication {
                 .get((req: express.Request,
                     res: express.Response,
                     next: express.NextFunction) => {
+                        console.log(req.user);
                     res.send(req.isAuthenticated() ? req.user : '0');
                 });
 

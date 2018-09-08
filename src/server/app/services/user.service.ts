@@ -11,6 +11,9 @@ export class UserService {
         // assignment of variables;
     }
 
+
+
+    //gives the admin a list of all users.
     public userList(page, itemsPerPage, currentPage, pageNumber, skip, limit): any {
         return new Promise((resolve, reject) => {
             Users.find().count((err, totalItems) => {
@@ -39,7 +42,8 @@ export class UserService {
 
                                 resolve(jsonOb);
                             }
-                        });
+                        }
+                    );
                 }
             });
         });
@@ -97,46 +101,46 @@ export class UserService {
     public deleteUser(id: any) {
         return new Promise((resolve, reject) => {
             this.getUser(id)
-                .then((user: any) => {
-                    if (!user) {
-                        resolve(null);
-                    } else {
-                        Users.remove({ _id: id }, (err: any) => {
-                            if (err) {
-                                reject(err);
-                            }
-                            resolve(id);
-                        });
-                    }
-                })
-                .catch((err: any) => {
-                    reject(err);
-                });
+            .then((user: any) => {
+                if (!user) {
+                    resolve(null);
+                } else {
+                    Users.remove({ _id: id }, (err: any) => {
+                        if (err) {
+                            reject(err);
+                        }
+                        resolve(id);
+                    });
+                }
+            })
+            .catch((err: any) => {
+                reject(err);
+            });
         });
     }
     
     public updateUser(id: any, userDetails: any) {
         return new Promise((resolve, reject) => {
             this.getUser(id)
-                .then((user: any) => {
-                    if (!user) {
-                        resolve(null);
-                    } else {
-                        user.username = userDetails.username || user.username;
-                        user.email = userDetails.email || user.email;
-                        user.fullname = userDetails.fullname || user.fullname;
-                        user.role = userDetails.role || user.role;
-                        user.save((err: any) => {
-                            if (err) {
-                                reject(err);
-                            }
-                            resolve(user._id);
-                        });
-                    }
-                })
-                .catch((err: any) => {
-                    reject(err);
-                });
+            .then((user: any) => {
+                if (!user) {
+                    resolve(null);
+                } else {
+                    user.username = userDetails.username || user.username;
+                    user.email = userDetails.email || user.email;
+                    user.fullname = userDetails.fullname || user.fullname;
+                    user.role = userDetails.role || user.role;
+                    user.save((err: any) => {
+                        if (err) {
+                            reject(err);
+                        }
+                        resolve(user._id);
+                    });
+                }
+            })
+            .catch((err: any) => {
+                reject(err);
+            });
         });
         
     }

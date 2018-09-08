@@ -78,7 +78,7 @@ export default function mongooseConf(ServerEventEmitter: ServerEvent.EventEmitte
 
   // Connect to our MongoDB database using the MongoDB
   // connection URI from our predefined environment variable
-  mongoose.connect(process.env.MONGO_URI, (error) => {
+  mongoose.connect(process.env.MONGO_URI, { useMongoClient: true }, (error) => {
 
     if (error)
       throw error;

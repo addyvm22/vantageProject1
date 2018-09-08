@@ -16,6 +16,8 @@ import * as authentication from "../controllers/auth.controller";
 // Load our `API` router for the `validation` service
 import * as validation from "../controllers/validation.controller";
 import * as user from "../controllers/user.controller";
+import * as hall from "../controllers/hall.controller";
+import * as booking from "../controllers/booking.controller";
 import { ServerEvent, IServerEvent } from '../handlers/event.handler';
 
 import * as event from '../controllers/event.controller'
@@ -62,8 +64,10 @@ export default (app: express.Application,
               res: express.Response,
               next: express.NextFunction) => {
 
-    if (!req.isAuthenticated())
-      res.send(401);
+    if (!req.isAuthenticated()) 
+      next();
+      //res.status(401).send(401);
+      
 
     else
       next();
@@ -75,8 +79,9 @@ export default (app: express.Application,
                res: express.Response,
                next: express.NextFunction) => {
 
-    if (!req.isAuthenticated() || req.user.role !== 'admin')
-      res.send(401);
+    if (!req.isAuthenticated() || req.user.role !== 'admin') 
+      next();
+      //res.send(401);
 
     else
       next();
@@ -101,6 +106,8 @@ export default (app: express.Application,
 
   let userRoutes: user.UserController = new user.UserController(this.app, router, admin);
   let eventRoutes: event.EventController= new event.EventController(this.app, router, auth);
+  let hallRoutes: hall.HallController = new hall.HallController(this.app, router, admin, auth);
+  let bookingRoutes : booking.BookingController = new booking.BookingController(this.app, router, admin, auth);
 
   // All of our routes will be prefixed with /api
   app.use('/api', router);

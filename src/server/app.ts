@@ -120,7 +120,7 @@ class Server {
     // Session secret
     this.app.use(session({
       secret : process.env.SESSION_SECRET,
-      resave : true,
+      resave : false,
       saveUninitialized : true
     }));
 

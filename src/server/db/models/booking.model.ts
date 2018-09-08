@@ -15,8 +15,9 @@ export interface IBooking{
 //new change
 
 export class Booking{
-    hallId : number;
-    userId: number;
+    
+    hallId : any;
+    userId: any;
     startDateTime: Date;
     endDateTime: Date;
     status : boolean;//true is available, false is not
@@ -24,19 +25,19 @@ export class Booking{
 
 
     constructor(data: Booking){
-        console.log("data, ", data);
+        console.log("printing data while creating booking: data, ", data);
         this.hallId = data.hallId;
         this.userId = data.userId;
         this.startDateTime = data.startDateTime;
         this.endDateTime = data.endDateTime;
         this.status = data.status;
     }
-    
+
 }
 
 let bookingSchema = new Schema({
-    hallId : { type:Number, required:true},
-    userId: { type:Number, required: true},
+    hallId : { type: String ,required:true},
+    userId: { type: String, required: true},
     startDateTime: {type: Date, required: true},
     endDateTime: {type: Date, required: true},
     status : {type: Boolean, required: true}
@@ -45,4 +46,4 @@ let bookingSchema = new Schema({
 
 export interface BookingDocument extends Booking, mongoose.Document{}
 
-export let Bookings = mongoose.model<BookingDocument>('ConfHall', bookingSchema);
+export let Bookings = mongoose.model<BookingDocument>('Bookings', bookingSchema);

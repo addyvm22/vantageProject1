@@ -8,8 +8,9 @@ export interface IHall{
     city: string;
     country: string;
     no_of_seats: Number;
-    ratings: Number;
+    //ratings: Number;
     imageUrl: string;
+
 }
 
 
@@ -19,8 +20,10 @@ export class Hall{
     city: string;
     country: string;
     no_of_seats: Number;
-    ratings: Number;
+    ratings: Number[];
     imageUrl: string;
+    bookingDates: Date[];
+
 
     constructor(data: Hall){
         console.log("data, ", data);
@@ -29,9 +32,9 @@ export class Hall{
         this.city = data.city;
         this.country = data.country;
         this.no_of_seats = data.no_of_seats;
-        this.ratings = data.ratings;
-        //if (data.ratings>5 || data.ratings<0) this.ratings = undefined;
+        this.ratings = [0,0,0,0,0];
         this.imageUrl = data.imageUrl;
+        this.bookingDates = [];
     }
     
 }
@@ -41,9 +44,10 @@ let hallSchema = new Schema({
     location :  { type : String, required : true},
     city :      { type : String, required : true},
     country :   { type : String, required : true},
-    no_of_seats : { type : Number, required : true},
-    ratings:    { type:Number},
-    imageUrl:   { type: String}
+    no_of_seats :{ type : Number, required : true},
+    ratings:    { type:[Number]},
+    imageUrl:   { type: String},
+    bookingDates:{ type: [Date]}
 });
 
 

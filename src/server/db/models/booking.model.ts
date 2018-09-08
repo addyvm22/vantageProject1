@@ -1,3 +1,8 @@
+/****
+ * 
+ * @author: Adwait
+ * 
+ * */
 import mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;
@@ -10,6 +15,8 @@ export interface IBooking{
     endDateTime: Date;
     status : boolean;
 }
+
+
 
 
 //new change

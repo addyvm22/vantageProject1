@@ -1,11 +1,12 @@
 /****
  * 
  * @author: Adwait
-<<<<<<< HEAD
  * myfirstproject
  * 
-=======
->>>>>>> 5071ff2077362edf99d42cd41d0b4b6e2edd6941
+ * 
+ * 
+ * 
+ * 
  * 
  * */
 

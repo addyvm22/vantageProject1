@@ -1,3 +1,9 @@
+/****
+ * 
+ * @author: Adwait
+ * 
+ * */
+
 import mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;

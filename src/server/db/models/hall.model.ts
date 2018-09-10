@@ -2,12 +2,7 @@
  * 
  * @author: Adwait
  * myfirstproject
- * 
- * 
- * 
- * 
- * 
- * 
+ *  
  * */
 
 import mongoose = require('mongoose');

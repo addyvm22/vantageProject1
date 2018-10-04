@@ -4,6 +4,8 @@ import { EventService } from '../services/eventService';
 import {ErrorDTO} from '../DTO/ErrorDTO';
 const BASE_URI = '/event';
 
+//unused model
+
 module EventModule {
     export class EventController {
         eventService: EventService;

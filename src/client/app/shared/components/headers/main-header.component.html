@@ -23,8 +23,35 @@
 					aria-expanded="false">{{appState.get('userData').username}} <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 
-						<li *ngIf="appState.get('userData').role == 'ROLE_ADMIN'"><a
-							[routerLink]=" ['./admin'] "> Create Event </a></li>
+						<li *ngIf="appState.get('userData').role == 'ROLE_ADMIN'">
+							<a 
+								[routerLink]=" ['./addEvent'] "> Create Event 
+							</a>
+						</li>
+						<li *ngIf="appState.get('userData').role == 'ROLE_ADMIN'">
+							<a 
+								[routerLink]=" ['./booking'] "> View Booking 
+							</a>
+						</li>
+						<li *ngIf="appState.get('userData').role == 'ROLE_USER'">
+							<a 
+								[routerLink]=" ['./booking'] "> View Booking 
+							</a>
+						</li>
+						<li >
+							<a [routerLink] ="['./searchEvent']" >
+								 Search Event 
+							</a>
+						</li>
+							<li *ngIf="appState.get('userData').role == 'ROLE_USER'">
+								<a [routerLink]=" ['./user'] " > Edit User  </a>
+						</li>
+					
+						<!-- <li *ngIf="appState.get('userData').role == 'ROLE_USER'">
+							<a
+							[routerLink] = "['./booking']"
+							>View Booking</a>
+						</li> -->
 						<li *ngIf="appState.get('isAuthenticated')"><a href="#"
 							(click)="logout()">Log Out</a></li>
 					</ul>

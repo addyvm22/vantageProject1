@@ -124,7 +124,7 @@ export default (app: express.Application,
   app.get('*', (req, res) => {
     // Load our src/app.html file
     //** Note that the root is set to the parent of this folder, ie the app root **
-    res.sendFile('/dist/client/index.html', { root: __dirname + "/../../"});
+    res.sendFile('/dist/client/index.html', { root: __dirname + "/../../../../"});
   });
 
 

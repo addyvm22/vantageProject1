@@ -7,6 +7,10 @@ import { createInputTransfer,
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { RouterModule } from '@angular/router';
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'; 
+//import {HttpClientModule} from '@angular/common/http';
+
+
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -19,11 +23,18 @@ import { ENV_PROVIDERS } from './environment';
 import { LoginModule } from './login';
 import { NoContentComponent } from './no-content';
 import { RegisterComponent, RegisterRoutingModule } from './register';
+//import { UserModule } from './user';
+
 import { ROUTES } from './app.routes';
 import { SHARED_APP_DIRECTIVES } from './shared/directives';
 import { SHARED_APP_SERVICES } from './shared/services';
 import { SHARED_APP_COMPONENTS } from './shared/components';
+import { LocalStorageService } from './shared/services/localStorage.service';
+import { InMemoryDataService } from './shared/services/in-memory-data.service';
+//import { map } from 'rxjs/operators';
 
+
+//import 'rxjs/operators';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -41,6 +52,9 @@ type StoreType = {
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
+
+
+ 
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
@@ -48,6 +62,7 @@ type StoreType = {
     ...SHARED_APP_COMPONENTS,
     AppComponent,
     NoContentComponent,
+    //HttpClientModule,
     RegisterComponent
   ],
   imports: [ // import Angular's modules
@@ -55,13 +70,17 @@ type StoreType = {
     FormsModule,
     HttpModule,
     LoginModule,
+    //UserModule,
     ReactiveFormsModule,
     RegisterRoutingModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    //HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService , { dataEncapsulation: false } ),
+    RouterModule.forRoot(ROUTES, { useHash: false })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
     ENV_PROVIDERS,
+    LocalStorageService,
+   // InMemoryDataService
   ]
 })
 export class AppModule {
@@ -101,5 +120,5 @@ export class AppModule {
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
-
+  
 }

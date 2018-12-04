@@ -43,7 +43,50 @@
 							email address</div>
 					</div>
 				</div>
+				<div class= "form-group has-feedback"
+					[ngClass] ="{'has-success': registerForm.controls.contactNumber.valid, 'has-error': submitted && registerForm.controls.contactNumber.invalid}">
+					<input type ="text" class="form-control" formControlName= "contactNumber" placeholder ="Contact Number" required>
+					<div class="control-label" 
+						*ngIf= "submitted && registerForm.controls.contactNumber.invalid">
+					<div *ngIf="registerForm.controls.contactNumber.errors?.required">*Required</div>
+					<div *ngIf="registerForm.controls.contactNumber.errors?.minlength">*Minimum 10 digit needed</div>
+					
+					</div>
+
+				</div>
+
+				 <div class="form-group has-feedback"
+					[ngClass] ="{'has-success': registerForm.controls.address.valid, 'has-error': submitted && registerForm.controls.address.invalid}">
+				<input type="text" class="form-control" formControlName ="address" placeholder="Address" required>
+				<div class="control-label"
+					*ngIf="submitted && registerForm.controls.address.invalid">
+					<div *ngIf="registerForm.controls.address.errors?.required">*Required</div>
+					<div *ngIf="registerForm.controls.address.errors?.minlength">*Minimum 4 charachers needed.</div>
+				</div>
+
+				</div>
+
+				<div class ="form-group has-feedback"
+					[ngClass] ="{'has-success': registerForm.controls.city.valid, 'has-error': submitted && registerForm.controls.city.invalid}">
+				<input type="text" class = "form-control" formControlName="city" placeholder="City" required>
+				<div class="control-label"
+					*ngIf="submitted && registerForm.controls.city.invalid">
+					<div *ngIf="registerForm.controls.city.errors?.required">*Required</div>
+					<div *ngIf="registerForm.controls.city.errors?.minlength">*Minimum 3 character Needed.</div>
+				</div>
+				</div>
+
+				<div class="form-group has-feedback"
+					[ngClass] ="{'has-success': registerForm.controls.country.valid, 'has-error': submitted && registerForm.controls.country.invalid}">
+				<input type="text" class="form-control" formControlName="country" placeholder="Country">
+				<div class="control-label"
+					*ngIf="submitted && registerForm.controls.country.invalid">
+					<div *ngIf="registerForm.controls.country.errors?.required">*Required</div>
+					<div *ngIf="registerForm.controls.country.errors?.minlength">*Minimim 2 character Needed.</div>
+				</div>
+				</div>
 				<div class="form-group"
+				
 					[ngClass]="{'has-success': registerForm.controls.password.valid, 'has-error': submitted && registerForm.controls.password.invalid}">
 					<!-- 				<label class="form-control-label">Password</label>  -->
 					<input type="password" class="form-control"
@@ -64,7 +107,7 @@
 						*ngIf="submitted && registerForm.controls.confirm.invalid">
 						<div *ngIf="registerForm.controls.confirm.errors?.required">*Required</div>
 						<div *ngIf="registerForm.controls.confirm.errors?.minlength">*Minimum
-							8 charachers needed</div>
+							8 charachers needed..</div>
 					</div>
 				</div>
 				<div>
@@ -74,11 +117,8 @@
 					Already have an account? <a [routerLink]="['../login']"
 						class="btn btn-link">LogIn</a>
 				</div>
-
 			</fieldset>
-
 		</form>
-
 		<div></div>
 	</div>
 </div>

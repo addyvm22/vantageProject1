@@ -69,7 +69,7 @@ export class RegisterComponent {
 
     newUser() {
 
-        let user = new FormModel('', '', '', '');
+        let user = new FormModel('', '', '', '', '', '', '', '');
 
         (<FormGroup>this.registerForm).setValue(user, { onlySelf: true });
 
@@ -81,11 +81,15 @@ export class RegisterComponent {
 
     ngOnInit() {
 
-        let user = new FormModel('', '', '', '');
+        let user = new FormModel('', '', '', '', '', '', '', '');
 
         this.registerForm = this.formBuilder.group({
             username: [user.username, [<any>Validators.required, <any>Validators.minLength(3)]],
             email: [user.email, [<any>Validators.required, <any>Validators.minLength(3), <any>Validators.pattern(re.email.complex.ascii.toString())]],
+            contactNumber:[user.contactNumber,[<any>Validators.required, <any>Validators.minLength(10)]],
+            address: [user.address, [<any>Validators.required, <any>Validators.minLength(4)]],
+            city: [user.city, [<any>Validators.required, <any>Validators.minLength(3)]],
+            country: [user.country, [<any>Validators.required, <any>Validators.minLength(4)]],
             password: [user.password, [<any>Validators.required, <any>Validators.minLength(8)]],
             confirm: [user.confirm, [<any>Validators.required, <any>Validators.minLength(8)]]
         });
@@ -104,10 +108,16 @@ export class RegisterComponent {
 
     processUserData() {
         this.submitted = true;
+        console.log(this.registerForm.value);
+        console.log(this.registerForm.valid);
         if (this.registerForm.valid) {
             let userData = new User(this.registerForm.controls['username'].value.toLowerCase(),
                 this.registerForm.controls['password'].value,
-                this.registerForm.controls['email'].value.toLowerCase());
+                this.registerForm.controls['email'].value.toLowerCase(),
+                this.registerForm.controls['contactNumber'].value,
+                this.registerForm.controls['address'].value,
+                this.registerForm.controls['city'].value,
+                this.registerForm.controls['country'].value);
             this.register(userData);
         }
     }

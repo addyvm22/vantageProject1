@@ -1,0 +1,98 @@
+<div class="col-lg-7 col-mg-7 co-sm-12">
+    <form [formGroup]="addEventForm" novalidate (submit)="submitData()" >
+        
+        <div class="form-group has-feedback" [ngClass]="{'has-success': addEventForm.controls.name.valid, 'has-error': submitted && addEventForm.controls.name.invalid}" >
+
+            <input type="text" class="form-control" placeholder="Event Name" formControlName="name">
+            <div class="control-label"
+					*ngIf="submitted && addEventForm.controls.name.invalid">
+					<div *ngIf="addEventForm.controls.name.errors?.required">*Required</div>
+					<div *ngIf="addEventForm.controls.name.errors?.minlength">*Minimum 4 charachers needed.</div>
+			</div>
+        </div>
+
+
+
+        <div class= "form-group has-feedback" [ngClass] ="{'has-success': addEventForm.controls.location.valid, 'has-error': submitted && addEventForm.controls.location.invalid}">
+					<input type ="text" class="form-control" formControlName= "location" placeholder ="Location" required>
+					<div class="control-label" 
+						*ngIf= "submitted && addEventForm.controls.location.invalid">
+					<div *ngIf="addEventForm.controls.location.errors?.required">*Required</div>
+					<div *ngIf="addEventForm.controls.location.errors?.minlength">*Minimum 4 characters.</div>
+					
+                    </div>
+        </div>
+
+        <div class= "form-group has-feedback"
+					[ngClass] ="{'has-success': addEventForm.controls.city.valid, 'has-error': submitted && addEventForm.controls.city.invalid}">
+					<input type ="text" class="form-control" formControlName= "city" placeholder ="City" required>
+					<div class="control-label" 
+						*ngIf= "submitted && addEventForm.controls.city.invalid">
+					<div *ngIf="addEventForm.controls.city.errors?.required">*Required</div>
+					<div *ngIf="addEventForm.controls.city.errors?.minlength">*Minimum 4 Characters.</div>
+					
+                    </div>
+        </div>
+
+        <div class="form-group has-feedback" [ngClass]="{'has-success': addEventForm.controls.country.valid, 'has-error': submitted && addEventForm.controls.country.invalid}">
+            <input type="text" class="form-control" placeholder="country" formControlName= "country">
+            <div class="control-label"
+					*ngIf="submitted && addEventForm.controls.country.invalid">
+					<div *ngIf="addEventForm.controls.country.errors?.required">*Required</div>
+					<div *ngIf="addEventForm.controls.country.errors?.minlength">*Minimum 4 charachers needed.</div>
+			</div>
+        </div>
+
+        
+
+        <div class= "form-group has-feedback"
+					[ngClass] ="{'has-success': addEventForm.controls.number_of_seats.valid, 'has-error': submitted && addEventForm.controls.number_of_seats.invalid}">
+					<input type ="text" class="form-control" formControlName= "number_of_seats" placeholder ="No of Seats" required>
+					<div class="control-label" 
+						*ngIf= "submitted && addEventForm.controls.number_of_seats.invalid">
+					<div *ngIf="addEventForm.controls.number_of_seats.errors?.required">*Required</div>
+					<div *ngIf="addEventForm.controls.number_of_seats.errors?.minlength">*Minimum 4 Char</div>
+					
+                    </div>
+        </div>
+
+        
+         <div class="container">
+                <div class="row">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" placeholder="Start Date" name="start_date"  />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+        </div>
+        
+        <div class="container">
+                <div class="row">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" placeholder="End Date" name="end_date"  />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+        </div>
+         
+        
+        
+        
+            <button type="submit" class="btn btn-primary">SubMit</button>
+        
+    </form>
+    
+
+</div>

@@ -67,6 +67,7 @@ export class LoginComponent {
     processUserData() {
         this.submitted = true;
         if (this.loginForm.valid) {
+            console.log(this.loginForm.value); //{username: 'jagjit', password: 'abcd1234', rememberme: false}
             let userData = new User(this.loginForm.controls['username'].value.toLowerCase(),
                 this.loginForm.controls['password'].value, this.loginForm.controls['rememberMe'].value);
             this.login(userData);
@@ -80,22 +81,42 @@ export class LoginComponent {
         this.message = 'Trying to log in ...';
 
         this.authService.login(user).subscribe((res) => {
-
+            console.log(res);
+            //debugger
             if (this.appState.get('isAuthenticated')) {
 
                 this.setMessage();
+                //console.log("User Name", user.username);
 
                 this.newUser();
 
                 // Get the redirect URL from our auth service
                 // If no redirect has been set, use the default
+                //debugger
+                //console.log(this.authService.redirectUrl);
+                
+                if (res.role == 'ROLE_ADMIN')
+                {
+                    console.log("ADMIN USER");
+                    let redirect = this.authService.redirectUrl
+                    ? this.authService.redirectUrl
+                    : '/booking';
+                
+                    this.router.navigate([redirect]);
+
+                }
+                else{
                 let redirect = this.authService.redirectUrl
                     ? this.authService.redirectUrl
-                    : '/home';
+                    : '/booking';
+                
+            
 
+                
+                //console.log(redirect);
                 // Redirect the user
                 this.router.navigate([redirect]);
-
+                }
             }
 
         }, (error) => {

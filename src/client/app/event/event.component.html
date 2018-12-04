@@ -1,12 +1,105 @@
+<!-- <div class="col-lg-7 col-mg-7 col-sm-12">
+	<form [formGroup] ="eventForm" novalidate (submit)= "processData()">
+		<div class="form-group has-feedback"
+		[ngClass]="{'has-success': eventForm.controls.name.valid, 'has-error': submitted && eventForm.controls.name.invalid}">
+			<input type="text" class="form-control" formControlName="name1"
+			placeholder="Name" required>
+			<div class="control-label"
+						*ngIf="submitted && eventForm.controls.name.invalid">
+			<div *ngIf="eventForm.controls.name.errors?.required">*Required</div>
+				<div *ngIf="eventForm.controls.name.errors?.minlength">*Minimum
+							3 characters needed</div>
+			</div>
+
+		</div>
+		<div>
+				<input type="text" class="form-control" formControlName="location"
+				placeholder="Location" required>
+
+
+		</div>
+		<div>
+				<input type="text" class="form-control" formControlName="city"
+				placeholder="City" required>
+		</div>
+		<div>
+				<input type="text" class="form-control" formControlName="coutry"
+				placeholder="Country" required>
+		</div>
+		<div>
+				<input type="text" class="form-control" formControlName="no_of_seats"
+				placeholder="Number of Seats" required>
+		</div>
+		<div>
+				<input type="text" class="form-control" formControlName="imgaeUrl"
+				placeholder="Image URL" required>
+		</div>
+		<div>
+				<button type="submit" class="btn btn-primary">SignUp</button>
+		</div>
+
+	</form>
+</div> -->
+
+
+ 
+
 <div>
 	<form name="eventForm">
 		<div>
 			Event Name: <input type="text" [(ngModel)]="event.name" 
 				name="eventName" />
+			
 		</div>
 		<div>
 			Description <input type="text" [(ngModel)]="event.description" name="eventDescription" />
 		</div>
 		<button type="submit" (click)="addEvent()">Add</button>
 	</form>
-</div>
+</div>  
+
+<!--
+<div class="col-lg-7 col-mg-7 col-sm-12">
+	<form 
+	[formGroup]="eventForm" novalidate
+			(submit)="processUserData()">
+		 <fieldset  class="form-group" style="padding: 15px;">
+		<div>
+			Event Name: <input type="text" [(ngModel)]="event.name" 
+				name="eventName" />	
+				<div class="form-group has-feedback"
+				[ngClass]="{'has-success': eventForm.controls.name.valid, 'has-error': submitted && eventForm.controls.name.invalid}">
+				 				<label class="form-control-label">Username</label>  
+				<!-- <input type="text" class="form-control" formControlName="name"
+					placeholder="Name" required>
+				<div class="control-label"
+					*ngIf="submitted && eventForm.controls.name.invalid">
+					<div *ngIf="eventForm.controls.name.errors?.required">*Required</div>
+					<div *ngIf="eventForm.controls.name.errors?.minlength">*Minimum
+						3 characters needed</div>
+				</div>
+			</div>
+
+	
+			
+		</div>  
+		<div>
+			Location: <input type="text" [(ngModel)] ="event.location" name ="location">
+		</div>
+		<div >
+			City: <input type="text" [(ngModel)] = 'event.city' name="city">
+		</div>
+		<div>
+			Country: <input type ="text" [(ngModel)] = 'event.country' name="country">
+		</div>
+		<div>
+			Number of Seats: <input type="number" [(ngModel)] = 'event.no_of_seats' name= "no_of_seats">
+		</div>
+		<div>
+			Image Url: <input type="text" [(ngModel)] ='event.imgaeUrl' name = "imageUrl">
+		</div>
+
+		<button type="submit" >Add</button>
+	</fieldset>
+	</form>
+</div>-->
